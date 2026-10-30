@@ -6,6 +6,8 @@ Escáner de documentos para Android, **sin anuncios**.
 
 **[Descargar ScannerUni.apk (versión 1.0)](https://github.com/Guaso1396/ScannerUni-Descargas/raw/main/ScannerUni.apk)**
 
+También en **[Releases](https://github.com/Guaso1396/ScannerUni-Descargas/releases/latest)**.
+
 Requiere Android 7.0 o superior.
 
 ## Cómo instalar

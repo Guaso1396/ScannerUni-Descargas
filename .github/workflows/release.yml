@@ -1,0 +1,31 @@
+# Publica en «Releases» el ScannerUni.apk de este repositorio, con la versión del archivo VERSION.
+# Se ejecuta cada vez que se sube un APK o una versión nueva a main.
+name: Publicar Release
+
+on:
+  push:
+    branches: [main]
+    paths: ["ScannerUni.apk", "VERSION"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "APP_VERSION=$(tr -d '[:space:]' < VERSION)" >> "$GITHUB_ENV"
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.APP_VERSION }}
+          target_commitish: ${{ github.sha }}
+          name: ScannerUni ${{ env.APP_VERSION }}
+          make_latest: true
+          files: ScannerUni.apk
+          body: |
+            Escáner de documentos para Android, **sin anuncios**. Requiere Android 7.0 o superior.
+
+            **Para instalar:** descarga **ScannerUni.apk** desde el celular, ábrelo y, si Android lo
+            pide, permite «Instalar apps desconocidas». Luego toca **Instalar**.
